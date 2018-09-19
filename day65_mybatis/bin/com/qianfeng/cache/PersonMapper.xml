@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 使用对应的Dao层的接口 -->
+<mapper namespace="com.qianfeng.cache.IPersonDao">
+	<!-- 本mapper中要使用二级缓存 -->
+	<cache></cache>
+
+	<resultMap type="Person" id="personMap">
+		<id property="id" column="id"/>
+		<result property="name" column="name" />
+		<result property="age" column="age" />
+		
+	</resultMap>
+	
+	<select id="findById" parameterType="int" resultMap="personMap" >
+		select * from person where id=#{id}
+	</select>
+	
+	
+	
+</mapper>
+
+
+
+
